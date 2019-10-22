@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Payment</title>
+
+    <link rel="icon" type="image/png" th:href="@{/favicon.ico}"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div th:replace="~{navigation :: navigation(Cart)}"/>
+
+    <p>Уважаемый <span th:text="${order.getUser().getFirstName()}"/>. Просьба проверить данные перед оплатой</p>
+
+    <ul>
+        <li> Общая сумма заказа: <span th:text="${order.getPrice()}"/></li>
+        <li>Адрес доставки: <span th:text="${order.getAddress()}"/></li>
+        <li>Контактный телефон: <span th:text="${order.getUser().getPhone()}"/></li>
+    </ul>
+
+    <a class="btn btn-danger" th:href="@{paypal/buy}">BUY</a>
+
+</div>
+
+</body>
+</html>
